@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdg2nbgs61hso"]
+
+[ext_resource type="Script" uid="uid://bvey3hq5pq2hr" path="res://hud.gd" id="1_64ctp"]
+[ext_resource type="FontFile" uid="uid://cvbfsgcsi1yf7" path="res://assets/Kenney Bold.ttf" id="2_8sq4i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_640wx"]
+font = ExtResource("2_8sq4i")
+font_size = 48
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.976471)
+shadow_offset = Vector2(2, 2)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_64ctp")
+
+[node name="MessageLabel" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over
+Coin Dash!"
+label_settings = SubResource("LabelSettings_640wx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Time" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0"
+label_settings = SubResource("LabelSettings_640wx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_640wx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -16.0
+offset_right = 44.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_8sq4i")
+text = "Start"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
